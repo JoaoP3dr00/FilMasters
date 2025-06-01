@@ -1,3 +1,4 @@
+---
 name: filmasters-ci
 on:
   pull_request:
@@ -10,7 +11,7 @@ jobs:
     timeout-minutes: 5
 
     strategy:
-      fail-fast:
+      fail-fast: true
       matrix:
         java: [21]
 
