@@ -1,0 +1,57 @@
+name: filmasters-ci
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-application:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 5
+
+    strategy:
+      fail-fast:
+      matrix:
+        java: [21]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 23
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: temurin
+
+#      - name: Run docker compose
+#        uses: hoverkraft-tech/compose-action@v2.0.1
+#        with:
+#          compose-file: "docker-compose.yaml"
+
+      - name: Build with gradle
+        run: ./gradlew build
+
+      - name: Run tests
+        run: ./gradlew test
+
+  deploy:
+    needs: check-application
+    runs-on: ubuntu-20.04
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Exemplo genérico: deploy via SSH
+#      - name: Deploy to server via SSH
+#        uses: appleboy/ssh-action@v1.0.3
+#        with:
+#          host: ${{ secrets.DEPLOY_HOST }}
+#          username: ${{ secrets.DEPLOY_USER }}
+#          key: ${{ secrets.DEPLOY_KEY }}
+#          script: |
+#            cd /var/www/filmasters
+#            git pull origin main
+#            ./gradlew restartApp  # ou outro comando que faça deploy
