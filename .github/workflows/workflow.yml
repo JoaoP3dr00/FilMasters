@@ -1,5 +1,5 @@
 ---
-name: filmasters-ci
+name: filmasters-ci/cd
 on:
   pull_request:
     branches:
@@ -36,23 +36,17 @@ jobs:
       - name: Run tests
         run: ./gradlew test
 
-#  deploy:
-#    needs: check-application
-#    runs-on: ubuntu-latest
-#    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-#
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v3
+  deploy:
+    needs: check-application
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
-      # Exemplo genérico: deploy via SSH
-#      - name: Deploy to server via SSH
-#        uses: appleboy/ssh-action@v1.0.3
-#        with:
-#          host: ${{ secrets.DEPLOY_HOST }}
-#          username: ${{ secrets.DEPLOY_USER }}
-#          key: ${{ secrets.DEPLOY_KEY }}
-#          script: |
-#            cd /var/www/filmasters
-#            git pull origin main
-#            ./gradlew restartApp  # ou outro comando que faça deploy
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Fake Deploy Step
+        run: |
+          echo "🔧 Simulando deploy..."
+          sleep 2
+          echo "✅ Deploy simulado com sucesso!"
