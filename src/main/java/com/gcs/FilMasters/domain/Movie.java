@@ -46,7 +46,7 @@ public class Movie {
         this.descricao = descricao;
     }
 
-    public int getDuracao(int duracaoMinutos) {
+    public int getDuracao() {
         return duracaoMinutos;
     }// duração add
 
