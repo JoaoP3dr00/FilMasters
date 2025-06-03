@@ -10,9 +10,10 @@ public class MovieTest {
         final String id = "1";
         final String nome = "Godzilla";
         final String descricao = "Monstro japones.";
+        final int duracaoMinutos = 120;
 
         // Act
-        Movie movie = new Movie(id, nome, descricao);
+        Movie movie = new Movie(id, nome, descricao, duracaoMinutos);
 
         // Assert
         Assertions.assertNotNull(movie);
@@ -22,5 +23,6 @@ public class MovieTest {
         Assertions.assertEquals(id, movie.getId());
         Assertions.assertEquals(nome, movie.getNome());
         Assertions.assertEquals(descricao, movie.getDescricao());
+        Assertions.assertEquals(duracaoMinutos, movie.getDuracaoMinutos());
     }
 }
