@@ -46,11 +46,12 @@ public class Movie {
         this.descricao = descricao;
     }
 
-    public int getDuracao() {
-        return duracaoMinutos;
-    }// duração add
+    public int getDuracaoMinutos() {
+    return duracaoMinutos;
+}
 
-    public void setDuracao(int duracaoMinutos) {
-        this.duracaoMinutos = duracaoMinutos;
-    }// duração add
+public void setDuracaoMinutos(int duracaoMinutos) {
+    this.duracaoMinutos = duracaoMinutos;
+}
+
 }
