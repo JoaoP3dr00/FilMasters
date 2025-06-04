@@ -2,6 +2,8 @@ package com.gcs.FilMasters.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,11 +15,16 @@ public class Movie {
     private String descricao;
     private int duracaoMinutos;// duração add
 
-    public Movie(String id, String nome, String descricao, int duracaoMinutos) {
+    @ManyToOne
+    @JoinColumn(name = "genre_id") // nome da coluna estrangeira
+    private Genre genre;
+
+    public Movie(String id, String nome, String descricao, int duracaoMinutos, Genre genre) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.duracaoMinutos = duracaoMinutos; // duração add
+        this.genre = genre; // associação com a entidade Genre
     }
 
     public Movie(){}
