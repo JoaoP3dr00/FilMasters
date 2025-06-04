@@ -17,14 +17,14 @@ public class Movie {
 
     @ManyToOne
     @JoinColumn(name = "genre_id") // nome da coluna estrangeira
-    private Genre genre;
+    private Genre genero;
 
-    public Movie(String id, String nome, String descricao, int duracaoMinutos, Genre genre) {
+    public Movie(String id, String nome, String descricao, int duracaoMinutos, Genre genero) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.duracaoMinutos = duracaoMinutos; // duração add
-        this.genre = genre; // associação com a entidade Genre
+        this.genero = genero; // associação com a entidade Genre
     }
 
     public Movie(){}
