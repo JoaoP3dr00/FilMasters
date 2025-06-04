@@ -13,7 +13,7 @@ public class MovieTest {
         final int duracaoMinutos = 120;
 
         // Act
-        Movie movie = new Movie(id, nome, descricao, duracaoMinutos);
+        Movie movie = new Movie(id, nome, descricao, duracaoMinutos, new Genre("1", "Ação", "Filmes com muita ação"));
 
         // Assert
         Assertions.assertNotNull(movie);
