@@ -1,5 +1,6 @@
 package com.gcs.FilMasters.application;
 
+import com.gcs.FilMasters.domain.Genre;
 import org.springframework.stereotype.Service;
 
 import com.gcs.FilMasters.application.persistence.MovieRepository;
@@ -15,7 +16,9 @@ public class CreateMovieUseCase {
     }
 
     public Movie createMovie(String id, String nome, String descricao, int duracaoMinutos) {
-        Movie movie = new Movie(id, nome, descricao, duracaoMinutos);
+        Genre genre = new Genre("1", "Ação", "Filmes com muita ação");
+
+        Movie movie = new Movie(id, nome, descricao, duracaoMinutos, genre);
         return movieRepository.save(movie);
     }
 }
