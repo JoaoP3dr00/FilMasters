@@ -15,10 +15,10 @@ public class CreateMovieUseCase {
         this.movieRepository = movieRepository;
     }
 
-    public Movie createMovie(String id, String nome, String descricao, int duracaoMinutos) {
+    public Movie createMovie(String id, String nome, String descricao, int duracaoMinutos, String anoLancamento) {
         Genre genre = new Genre("1", "Ação", "Filmes com muita ação");
 
-        Movie movie = new Movie(id, nome, descricao, duracaoMinutos, genre);
+        Movie movie = new Movie(id, nome, descricao, duracaoMinutos, genre, anoLancamento);
         return movieRepository.save(movie);
     }
 }
