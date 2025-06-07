@@ -14,17 +14,19 @@ public class Movie {
     private String nome;
     private String descricao;
     private int duracaoMinutos;// duração add
+    private String anoLancamento;
 
     @ManyToOne
     @JoinColumn(name = "genre_id") // nome da coluna estrangeira
     private Genre genero;
 
-    public Movie(String id, String nome, String descricao, int duracaoMinutos, Genre genero) {
+    public Movie(String id, String nome, String descricao, int duracaoMinutos, Genre genero, String anoLancamento) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.duracaoMinutos = duracaoMinutos; // duração add
         this.genero = genero; // associação com a entidade Genre
+        this.anoLancamento = anoLancamento;
     }
 
     public Movie(){}
@@ -55,10 +57,17 @@ public class Movie {
 
     public int getDuracaoMinutos() {
     return duracaoMinutos;
-}
+    }
 
-public void setDuracaoMinutos(int duracaoMinutos) {
+    public void setDuracaoMinutos(int duracaoMinutos) {
     this.duracaoMinutos = duracaoMinutos;
-}
+    }
+    public String getAnoLancamento() {
+        return anoLancamento;
+    }
+
+    public void setAnoLancamento(String anoLancamento) {
+        this.anoLancamento = anoLancamento;
+    }
 
 }

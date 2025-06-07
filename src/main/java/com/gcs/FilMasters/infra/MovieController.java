@@ -21,7 +21,10 @@ import com.gcs.FilMasters.application.CreateMovieUseCase;;;
 
         @PostMapping
         public ResponseEntity<Movie> createMovie(@RequestBody Movie movie) {
-            Movie createdMovie = createMovieUseCase.createMovie(movie.getId(), movie.getNome(), movie.getDescricao(), movie.getDuracaoMinutos());
+            Movie createdMovie = createMovieUseCase.createMovie(movie.getId(), movie.getNome(), movie.getDescricao(), movie.getDuracaoMinutos(), movie.getAnoLancamento());
+            if (createdMovie == null) {
+                return ResponseEntity.badRequest().build();
+            }
             return ResponseEntity.ok(createdMovie);
         }
     }
