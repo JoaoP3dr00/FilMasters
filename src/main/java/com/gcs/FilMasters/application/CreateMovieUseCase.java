@@ -8,7 +8,6 @@ import com.gcs.FilMasters.domain.Movie;
 
 @Service
 public class CreateMovieUseCase {
-
     private final MovieRepository movieRepository;
 
     public CreateMovieUseCase(MovieRepository movieRepository) {
